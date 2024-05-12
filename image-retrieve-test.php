@@ -24,8 +24,12 @@ if ($result->num_rows > 0) {
         $imageType = "image/jpeg"; // mime_content_type($imageData);
         $base64Image = base64_encode($imageData); // Convert image data to base64
 
-         // Display the image
-         echo '<img src="data:' . $imageType . ';base64,' . $base64Image . '" alt="Image" width="25%"> <br><br>';
+        //  // Display the image
+        //  echo '<img src="data:' . $imageType . ';base64,' . $base64Image . '" alt="Image" width="25%"> <br><br>';
+
+        // Output the image directly
+        header("Content-type: $imageType");
+        echo $imageData;
     }
 } else {
     echo "No images found.";
