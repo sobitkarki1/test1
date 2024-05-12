@@ -14,10 +14,11 @@ if ($conn->connect_error) {
  {
     $name = $_POST['name'];
     $description = $_POST['description'];
-    $image = $_POST['image'];
+    $image = $_FILES['image']['tmp_name']; // Temporary file path of the uploaded image
+    $imgData = addslashes(file_get_contents($image));
     $minimum_price = $_POST['min_price'];
 
-    $sql_query = "INSERT INTO item_details (name,description,image,minimum_price) VALUES ('$name','$description','$image','$minimum_price')"; 
+    $sql_query = "INSERT INTO item_details (name,description,image,minimum_price) VALUES ('$name','$description','$imgData','$minimum_price')"; 
 
     if (mysqli_query($conn,$sql_query))
     {
