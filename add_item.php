@@ -15,6 +15,12 @@ if ($conn->connect_error) {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $image = $_FILES['image']['tmp_name']; // Temporary file path of the uploaded image
+
+    // Validate uploaded file type
+    if ($imageType !== 'image/jpeg') {
+        die("Only JPEG images are allowed.");
+    }
+
     $imgData = addslashes(file_get_contents($image));
     $minimum_price = $_POST['min_price'];
 
