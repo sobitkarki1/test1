@@ -21,7 +21,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $imageData = $row['image'];
-        $imageType = mime_content_type($imageData);
+        $imageType = "image/jpeg"; // mime_content_type($imageData);
 
          // Display the image
          echo '<img src="data:' . $imageType . ';base64,' . $base64Image . '" alt="Image" width="25%"> <br><br>';
